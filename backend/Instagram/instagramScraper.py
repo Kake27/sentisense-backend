@@ -8,7 +8,7 @@ load_dotenv()
 
 FILENAME = os.getenv("INSTAGRAM_COOKIE_FILE_1")
 
-class Instgram:
+class Instagram:
     def __init__(self):
         self.L = Instaloader()
         self.L.load_session_from_file(FILENAME)

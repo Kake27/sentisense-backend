@@ -13,9 +13,7 @@ from dotenv import load_dotenv
 import os
 import json
 import uvicorn
-import sys
 
-print(sys.path)
 load_dotenv()
 
 app = FastAPI()
@@ -204,8 +202,6 @@ async def get_solutions():
         print("Error occurred while fetching solutions: "+ str(e))
         return {"error":"An error occurred while fetching solutions"}
 
-if __name__ == "__main__":
-    uvicorn.run("server:app", host="0.0.0.0", port=10000)
 
 
 

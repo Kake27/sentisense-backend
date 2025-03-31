@@ -1,7 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from Instagram.instagramScraper import Instgram
+from Instagram.instagramScraper import Instagram
 from Reddit.redditScraper import Reddit
 from Youtube.youtubeScraper import Youtube
 

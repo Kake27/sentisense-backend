@@ -1,20 +1,21 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from Instagram.instagramScraper import Instagram
-from Reddit.redditScraper import Reddit
-from Youtube.youtubeScraper import Youtube
+from backend.Instagram.instagramScraper import Instagram
+from backend.Reddit.redditScraper import Reddit
+from backend.Youtube.youtubeScraper import Youtube
 
-from clustering.clustering import Clustering
-from GeminiIntegration.genai import Genai
-from testing import SentimentAnalysis
-
+from backend.clustering.clustering import Clustering
+from backend.GeminiIntegration.genai import Genai
+from backend.testing import SentimentAnalysis
 import pandas as pd
 from dotenv import load_dotenv
 import os
 import json
 import uvicorn
+import sys
 
+print(sys.path)
 load_dotenv()
 
 app = FastAPI()

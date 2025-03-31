@@ -8,7 +8,7 @@ load_dotenv()
 
 FILENAME = os.getenv("INSTAGRAM_COOKIE_FILE_1")
 
-class Instgram:
+class Instagram:
     def __init__(self):
         self.L = Instaloader()
         self.L.load_session_from_file(FILENAME)
@@ -45,7 +45,7 @@ class Instgram:
 url = "https://www.instagram.com/p/DFtT1dQTRvL/"
 
 if __name__ == "__main__":
-    instagram = Instgram()
+    instagram = Instagram()
     comments = instagram.get_comments(url=url)
     for comment in comments:
         print(comment)

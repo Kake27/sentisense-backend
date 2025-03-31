@@ -1,7 +1,7 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from Instagram.instagramScraper import Instgram
+from Instagram.instagramScraper import Instagram
 from Reddit.redditScraper import Reddit
 from Youtube.youtubeScraper import Youtube
 
@@ -53,7 +53,7 @@ def analyse(url):
             scraper = Reddit()
             comments = scraper.get_comments(url=url)
         elif "instagram.com" in url:
-            scraper = Instgram()
+            scraper = Instagram()
             comments = scraper.get_comments(url=url)
         elif "youtube.com" in url:
             scraper = Youtube()

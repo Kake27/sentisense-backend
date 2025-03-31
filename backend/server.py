@@ -53,7 +53,7 @@ def analyse(url):
             scraper = Reddit()
             comments = scraper.get_comments(url=url)
         elif "instagram.com" in url:
-            scraper = Instgram()
+            scraper = Instagram()
             comments = scraper.get_comments(url=url)
         elif "youtube.com" in url:
             scraper = Youtube()

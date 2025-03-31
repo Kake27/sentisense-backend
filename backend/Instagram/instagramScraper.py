@@ -45,7 +45,7 @@ class Instagram:
 url = "https://www.instagram.com/p/DFtT1dQTRvL/"
 
 if __name__ == "__main__":
-    instagram = Instgram()
+    instagram = Instagram()
     comments = instagram.get_comments(url=url)
     for comment in comments:
         print(comment)

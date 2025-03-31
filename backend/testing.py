@@ -2,12 +2,13 @@ from keras._tf_keras.keras.preprocessing.sequence import pad_sequences
 from keras._tf_keras.keras.models import load_model
 import pickle
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
 class SentimentAnalysis:
     def __init__(self):
-        self.model = load_model('sentisensemodel.h5')
+        self.model = load_model(os.path.join(os.path.dirname(__file__), 'sentisensemodel.h5'))
 
         with open('sstokenizer.pickle', 'rb') as handle:
             self.tokenizer = pickle.load(handle)

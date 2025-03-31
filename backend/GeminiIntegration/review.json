@@ -1,0 +1,53 @@
+{
+    "neutral": {
+        "Cluster 0": [
+            "This product is okay. It works as expected but lacks innovation.",
+            "It is a decent product, but could be better.",
+            "The product is fine but could use some improvements."
+        ],
+        "Cluster 1": [
+            "It’s an average experience. It does the job but nothing special.",
+            "The product is decent but lacks advanced features.",
+            "A fair product, but not extraordinary in any way."
+        ],
+        "Cluster 2": [
+            "The product is serviceable but not remarkable in any aspect.",
+            "It’s a fine product but doesn’t stand out from the competition.",
+            "Good enough product, but doesn’t wow me."
+        ]
+    },
+    "negative": {
+        "Cluster 0": [
+            "The product is terrible. It broke after a few uses.",
+            "This product is awful, it stopped working within a week.",
+            "I hate this product, it’s very poorly made."
+        ],
+        "Cluster 1": [
+            "This product is disappointing. It doesn’t work as advertised.",
+            "It’s frustrating that this product doesn’t meet expectations.",
+            "The product failed to live up to its promises."
+        ],
+        "Cluster 2": [
+            "I regret buying this product. It’s of very poor quality.",
+            "Very bad product, it doesn’t work at all.",
+            "Not worth the money. The product is a scam."
+        ]
+    },
+    "positive": {
+        "Cluster 0": [
+            "This product is amazing! It exceeded all my expectations.",
+            "I absolutely love this product, it works perfectly.",
+            "The product is fantastic, very satisfied with the quality."
+        ],
+        "Cluster 1": [
+            "This is an excellent product, highly recommend it!",
+            "Such a great product! It works beyond expectations.",
+            "I am so impressed with this product. Highly recommend it."
+        ],
+        "Cluster 2": [
+            "An outstanding product! It has been a game changer.",
+            "I am very happy with this purchase, best product ever.",
+            "This is an incredible product. Worth every penny."
+        ]
+    }
+}

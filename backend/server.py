@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["https://sentisense-frontend.vercel.app"],
+    allow_origins = ["*"],
     allow_credentials = True,
     allow_methods = ["*"],
     allow_headers = ["*"],
@@ -22,7 +22,6 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 import json
-from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
@@ -90,11 +89,7 @@ def analyse(url):
         
     status["processing"] = False
 
-@app.middleware("http")
-async def add_csp_header(request, call_next):
-    response = await call_next(request)
-    response.headers["Content-Security-Policy"] = "default-src * 'self' data: blob:; connect-src * 'self' https://sentisense-backend.onrender.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
-    return response
+
 
 
 @app.get("/")
@@ -139,8 +134,9 @@ async def get_graph_data():
 async def get_cluster():
     if(os.path.exists("comments.csv")):
         df = pd.read_csv("comments.csv")
-        clustering = Clustering()
-        clusters = clustering.create_cluster(df)
+        return {"message": "testing clusters"}
+        # clustering = Clustering()
+        # clusters = clustering.create_cluster(df)
         
         return clusters
     

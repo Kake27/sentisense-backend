@@ -5,10 +5,11 @@ import pandas as pd
 import json
 import tensorflow as tf
 from dotenv import load_dotenv
+import os
 
 load_dotenv()
 
-import os
+
 
 class Clustering:
     def __init__(self):

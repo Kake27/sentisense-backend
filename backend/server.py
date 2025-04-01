@@ -134,8 +134,9 @@ async def get_graph_data():
 async def get_cluster():
     if(os.path.exists("comments.csv")):
         df = pd.read_csv("comments.csv")
+        clustering = Clustering()
         return {"message": "testing clusters"}
-        # clustering = Clustering()
+        
         # clusters = clustering.create_cluster(df)
         
         return clusters

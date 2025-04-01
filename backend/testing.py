@@ -4,6 +4,8 @@ import pickle
 from dotenv import load_dotenv
 import os
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 load_dotenv()
 
 class SentimentAnalysis:

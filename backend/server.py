@@ -12,7 +12,8 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 import json
-import uvicorn
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 load_dotenv()
 

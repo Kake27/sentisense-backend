@@ -28,10 +28,11 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 load_dotenv()
 
 
-
 status = {"processing": False, "comments_found": False, "file_created": False, "error": False}
 prev_url = ""
 
+clustering = Clustering()
+genai = Genai()
 
 def analyse(url):
     global status
@@ -134,11 +135,10 @@ async def get_graph_data():
 async def get_cluster():
     if(os.path.exists("comments.csv")):
         df = pd.read_csv("comments.csv")
-        clustering = Clustering()
-        return {"message": "testing clusters"}
         
-        # clusters = clustering.create_cluster(df)
+        # return {"message": "testing clusters"}
         
+        clusters = clustering.create_cluster(df)
         return clusters
     
     return {"error": "File not found"}
@@ -150,7 +150,6 @@ async def get_solutions():
         solution_data = ""
         if(os.path.exists("comments.csv")):
             df = pd.read_csv("comments.csv")
-            clustering = Clustering()
             solution_data = clustering.create_cluster(df)
 
         data = json.loads(solution_data)
@@ -163,7 +162,7 @@ async def get_solutions():
 
         # print(formatted_output)
 
-        genai = Genai()
+        
         solutions = genai.get_solutions(
             prompt=
             """
@@ -202,6 +201,7 @@ async def get_solutions():
         )
         print(solutions)
         return solutions
+    
     except Exception as e:
         print("Error occurred while fetching solutions: "+ str(e))
         return {"error":e}

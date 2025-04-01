@@ -1,6 +1,16 @@
 from fastapi import FastAPI, BackgroundTasks
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins = ["https://sentisense-frontend.vercel.app"],
+    allow_credentials = True,
+    allow_methods = ["*"],
+    allow_headers = ["*"],
+)
+
 from backend.Instagram.instagramScraper import Instagram
 from backend.Reddit.redditScraper import Reddit
 from backend.Youtube.youtubeScraper import Youtube
@@ -18,17 +28,10 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
 load_dotenv()
 
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins = ["https://sentisense-frontend.vercel.app"],
-    allow_credentials = True,
-    allow_methods = ["*"],
-    allow_headers = ["*"],
-)
+
 
 status = {"processing": False, "comments_found": False, "file_created": False, "error": False}
-prev_url = "https://www.youtube.com/watch?v=h0ZMhhquL8c"
+prev_url = ""
 
 
 def analyse(url):

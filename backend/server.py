@@ -64,15 +64,12 @@ def analyse(url):
             return
         
         status["comments_found"] = True
+        print("comments found")
 
         sentiments = []
-        # sentiment_labels = {
-        #     "LABEL_0": "Negative",
-        #     "LABEL_1": "Neutral",
-        #     "LABEL_2": "Positive"
-        # }
 
         analyser = SentimentAnalysis()
+        print("sentiment model loaded")
 
         for comment in comments:
             sentiment = analyser.predict_class([comment])

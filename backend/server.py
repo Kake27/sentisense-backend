@@ -31,7 +31,7 @@ load_dotenv()
 status = {"processing": False, "comments_found": False, "file_created": False, "error": False}
 prev_url = ""
 
-clustering = Clustering()
+# clustering = Clustering()
 genai = Genai()
 
 def analyse(url):
@@ -136,10 +136,10 @@ async def get_cluster():
     if(os.path.exists("comments.csv")):
         df = pd.read_csv("comments.csv")
         
-        # return {"message": "testing clusters"}
+        return {"message": "testing clusters"}
         
-        clusters = clustering.create_cluster(df)
-        return clusters
+        # clusters = clustering.create_cluster(df)
+        # return clusters
     
     return {"error": "File not found"}
 
@@ -150,7 +150,8 @@ async def get_solutions():
         solution_data = ""
         if(os.path.exists("comments.csv")):
             df = pd.read_csv("comments.csv")
-            solution_data = clustering.create_cluster(df)
+            # solution_data = clustering.create_cluster(df)
+            return {"message": "testing solutions"}
 
         data = json.loads(solution_data)
         formatted_output = ""

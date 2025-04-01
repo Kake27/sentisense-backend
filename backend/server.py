@@ -12,6 +12,7 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 import json
+from starlette.middleware.trustedhost import TrustedHostMiddleware
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 
@@ -26,7 +27,6 @@ app.add_middleware(
     allow_headers = ["*"],
 )
 
-# sent_pipeline = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment")
 status = {"processing": False, "comments_found": False, "file_created": False, "error": False}
 prev_url = "https://www.youtube.com/watch?v=h0ZMhhquL8c"
 
@@ -86,6 +86,12 @@ def analyse(url):
         status["error"] = True
         
     status["processing"] = False
+
+@app.middleware("http")
+async def add_csp_header(request, call_next):
+    response = await call_next(request)
+    response.headers["Content-Security-Policy"] = "default-src * 'self' data: blob:; connect-src * 'self' https://sentisense-backend.onrender.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
+    return response
 
 
 @app.get("/")
@@ -198,7 +204,7 @@ async def get_solutions():
         return solutions
     except Exception as e:
         print("Error occurred while fetching solutions: "+ str(e))
-        return {"error":"An error occurred while fetching solutions"}
+        return {"error":e}
 
 
 

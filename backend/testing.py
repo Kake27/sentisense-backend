@@ -12,7 +12,7 @@ class SentimentAnalysis:
     def __init__(self):
         self.model = load_model(os.path.join(os.path.dirname(__file__), 'sentisensemodel.h5'))
 
-        with open(os.path.join(os.path.dirname(__file__), 'sentisensemodel.h5'), 'rb') as handle:
+        with open(os.path.join(os.path.dirname(__file__), 'sstokenizer.pickle'), 'rb') as handle:
             self.tokenizer = pickle.load(handle)
 
     def predict_class(self, text):
